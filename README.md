@@ -1,39 +1,44 @@
-# < Application name >
+# NEAR Protocol Contract development issues
 
-A small description.
+## Issues:
 
-A sample Readme can be found **[here](https://github.com/vibhurai/NEAR-Contract--Notes-app/blob/main/README.md)** 
+1. `Task`: Create an account via RPC (Remote Procedural Calls) and deploy a contract on the account and initialise the contract.
+
+`Issue`: Account gets created, the contract is deployed successfully but the function call gives a deserialization error
+`Log`: "Error while deserilalizing the module"
+
+2. `Task`: Delete the previously created account via RPCs
+
+I tried the following 3 approaches to do this task,
+
+1.  Revoking the access-key of the sub account and then deleting the account.
+
+2.  Deleting the account without revoking the access key of the sub account.
+
+3.  Creating and deleting the account in one promise itself.
 
 ## Contract
-(Contract methods with parameters and its types)
-  
-  Example:
-  
+
 ```ts
-// ====================================
-// CONTRACT INITIALISATION
-// ====================================
+// ------------------------------------
+// contract initialization
+// ------------------------------------
 
 /**
  * initialize contract with owner ID and other config data
  *
  * (note: this method is called "constructor" in the singleton contract code)
  */
-function init(master: AccountId): void
+function init(owner: AccountId, allow_anonymous: bool = true): void;
 
-// ====================================
-// PUBLIC METHODS
-// ====================================
-
-
-// ====================================
-// OWNER METHOD(S)
-// ====================================
+// ------------------------------------
+// public methods
+// ------------------------------------
 
 /**
- * Clear the entire database for all users
+ * the method creating an account and deploying contract via RPCs
  */
-function clear(): void
+function log(): void;
 ```
 
 ## Usage
@@ -47,6 +52,11 @@ To deploy the contract for development, follow these steps:
 3. Run `yarn dev-dep` to deploy the contract (this uses `near dev-deploy`).
 4. Run `export CONTRACT=<the ID of your dev account>`.
 5. You can also deploy the contract to a specified account by using `yarn dep`.
+6. Execute this command for initiliazing the contract
+
+```sh
+ near call $CONTRACT init '{"owner":"'$CONTRACT'"}' --accountId $CONTRACT
+```
 
 **Your contract is now ready to use.**
 
