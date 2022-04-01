@@ -9,13 +9,15 @@
 
 2. `Task`: Delete the previously created account via RPCs
 
-I tried the following 3 approaches to do this task,
+`Issue`: I tried the following 3 approaches to do this task, (but none of them worked giving an "ActorNoPermission" error)
 
-1.  Revoking the access-key of the sub account and then deleting the account.
+    1.  Revoking the access-key of the sub account and then deleting the account.
 
-2.  Deleting the account without revoking the access key of the sub account.
+    2.  Deleting the account without revoking the access key of the sub account.
 
-3.  Creating and deleting the account in one promise itself.
+    3.  Creating and deleting the account in one promise itself.
+
+`Log`: Sample Transaction link: **https://explorer.testnet.near.org/transactions/5WgGzPmCnUWUWeSEktfAEoLmhyyemTkZyA4d5WwXHYm7**
 
 ## Contract
 
