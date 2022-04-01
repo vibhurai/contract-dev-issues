@@ -1,7 +1,7 @@
 {
-  "name": "notes",
+  "name": "starter--assemblyscript",
   "version": "0.0.1",
-  "description": "Notes app",
+  "description": "Starter project for writing AssemblyScript contracts for NEAR Protocol",
   "scripts": {
     "dev": "watch -d -n 1 'clear && yarn test:unit'",
     "asp": "asp --verbose --nologo",
@@ -13,12 +13,12 @@
     "clean": "rm -rf ./build && rm -rf ./neardev && rm -rf ./target",
     "dep": "npm run cbuild && npm run cdep",
     "dev-dep": "npm run cbuild && npm run cdevdep",
-    "cdep": "near deploy --accountId=$CONTRACT --wasmFile=./build/release/notes.wasm",
-    "cdevdep": "near dev-deploy --wasmFile=./build/release/notes.wasm",
+    "cdep": "near deploy --accountId=$CONTRACT --wasmFile=./build/release/thanks.wasm",
+    "cdevdep": "near dev-deploy --wasmFile=./build/release/thanks.wasm",
     "del": "near delete $CONTRACT $OWNER && near create-account notes.$OWNER --masterAccount $OWNER"
   },
   "keywords": [],
-  "author": "ka",
+  "author": "hello@near.org",
   "license": "ISC",
   "devDependencies": {
     "near-sdk-as": "^3.1.0"
